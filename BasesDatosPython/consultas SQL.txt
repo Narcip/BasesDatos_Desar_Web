@@ -1,0 +1,19 @@
+-- Canción más antigua
+SELECT Tema, Año FROM sencillos ORDER BY Año ASC LIMIT 1;
+
+-- Artista con más apariciones
+SELECT Intérprete, COUNT(*) AS Apariciones FROM sencillos GROUP BY Intérprete ORDER BY Apariciones DESC LIMIT 1;
+
+-- País con más artistas
+SELECT País, COUNT(DISTINCT Intérprete) AS Cant_Artistas FROM sencillos GROUP BY País ORDER BY Cant_Artistas DESC LIMIT 1;
+
+-- Canciones distintas por cada idioma
+SELECT Idioma, COUNT(DISTINCT Tema) AS Cant_Canciones FROM sencillos GROUP BY Idioma;
+
+-- Continente con más apariciones
+SELECT Continente, COUNT(*) AS Apariciones FROM sencillos GROUP BY Continente ORDER BY Apariciones DESC LIMIT 1;
+
+-- Canción que ha estado más % de tiempo al año como número 1
+SELECT Intérprete, ROUND((CAST(Semanas AS FLOAT) / 52) * 100) || '%' AS Porcentaje_Tiempo_Numero1 FROM sencillos ORDER BY Porcentaje_Tiempo_Numero1 DESC LIMIT 1;
+
+
